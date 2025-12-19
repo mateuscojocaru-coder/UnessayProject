@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/intro.css" />
+    <title>Corinne</title>
+</head>
+
+
+<body>
+    <header id="navbar" class="intro">
+        <div class="intro-wrap">
+            <div class="intro-eyebrow">UnEssay Project</div>
+            <h1 class="intro-title">Inside Ourika's Mind</h1>
+            <div class="intro-sub">by Fabio & Mateus</div>
+
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="chevron"></div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <main id="mainContent">
+        <div id="detailOverlay" aria-hidden="true">
+            <div id="detailCard" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+                <button id="detailClose" type="button">✕</button>
+
+                <h2 id="detailTitle"></h2>
+
+                <blockquote id="detailQuote"></blockquote>
+
+                <div id="reflectionButtons">
+                    <button id="btnFabio" type="button">See Fabio&apos;s reflection</button>
+                    <button id="btnMateus" type="button">See Mateus&apos;s reflection</button>
+                </div>
+
+                <div id="detailReflection"></div>
+            </div>
+        </div>
+
+        <div id="container">
+            <div class="brain">
+                <div class="node">
+                    <img src="./assets/images/brain_main.png" alt="corrine brain" />
+                </div>
+            </div>
+
+            <div class="innocence"  style="--d:.1s">
+                <div class="node">
+                    <h3>Innocence</h3>
+                    <p>(Click Me)</p>
+                </div>
+            </div>
+
+            <div class="recognition"  style="--d:.2s">
+                <div class="node">
+                    <h3>Recognition</h3>
+                    <p>(Click Me)</p>
+                </div>
+            </div>
+
+            <div class="exclusion"  style="--d:.3s">
+                <div class="node">
+                    <h3>Exclusion</h3>
+                    <p>(Click Me)</p>
+                </div>
+            </div>
+
+
+            <div class="isolation"  style="--d:.4s">
+                <div class="node">
+                    <h3>Isolation</h3>
+                    <p>(Click Me)</p>
+                </div>
+            </div>
+
+            <div class="desire"  style="--d:.5s">
+                <div class="node">
+                    <h3>Desire</h3>
+                    <p>(Click Me)</p>
+                </div>
+            </div>
+
+            <div class="resignation"  style="--d:.6s">
+                <div class="node">
+                    <h3>Resignation</h3>
+                    <p>(Click Me)</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="./scripts/diagram.js"></script>
+    <script src="./scripts/selection.js"></script>
+    <script src="./scripts/intro.js"></script>
+
+</body>
+
+</html>

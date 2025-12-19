@@ -1,0 +1,75 @@
+#navbar.intro{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:grid;
+  place-items:center;
+  height:100vh;
+  background:
+    radial-gradient(800px 500px at 50% 45%, rgba(120,120,255,.18), transparent 60%),
+    #000;
+  color:#fff;
+  overflow:hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  will-change: transform, opacity;
+}
+
+#navbar.intro.is-gone{
+  pointer-events:none;
+  opacity:0;
+  transform:scale(.92);
+  visibility:hidden;
+}
+
+.intro-wrap{
+  text-align:center;
+  animation: breathe 6s ease-in-out infinite;
+  padding: 24px;
+}
+
+@keyframes breathe{
+  0%,100%{ transform:scale(1); }
+  50%{ transform:scale(1.02); }
+}
+
+.intro-eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  font-size:.7rem;
+  opacity:.6;
+}
+
+.intro-title{
+  margin:.4em 0 .2em;
+  font-size:clamp(2.4rem,6vw,4.2rem);
+  font-weight:800;
+}
+
+.intro-sub{
+  opacity:.75;
+  font-size:1rem;
+}
+
+.scroll-indicator{
+  margin-top:48px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  font-size:.75rem;
+  opacity:.7;
+}
+
+.chevron{
+  width:20px;
+  height:20px;
+  border-right:2px solid #fff;
+  border-bottom:2px solid #fff;
+  transform:rotate(45deg);
+  animation: bounce 1.6s infinite;
+}
+
+@keyframes bounce{
+  0%,100%{ transform:rotate(45deg) translate(0,0); }
+  50%{ transform:rotate(45deg) translate(6px,6px); }
+}
