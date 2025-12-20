@@ -14,23 +14,42 @@ const selectableNodes = Array.from(
 let selectedNode = null;
 let selectedKey = null;
 
-let QUOTES = {};
-let REFLECTIONS = {};
+// Embedded JSON data
+const QUOTES = {
+  "innocence": "\"Alas! I could not foresee that those sweet hours of instruction would be followed by such bitter days\" (Duras 19)",
+  "recognition": "\"I do not have friends, Madame, I have protectors, and that is quite a different matter\" (Duras 27)",
+  "exclusion": "\"She has entered society without its permission; society will have its revenge\" (Duras 20)",
+  "isolation": "\"I needed those I loved; it did not occur to me that those I loved did not need me\" (Duras 20)",
+  "desire": "\"The picture of this young mother with her son moved everyone. (...) My heart devoured this image of a happiness that would always be foreign to me, and envy, like a vulture, fed in my breast\" (Duras 27)",
+  "resignation": "\"Let me go, Charles, to the only place where I may think of you constantly\" (Duras 29)"
+};
 
-async function loadData() {
-  // GitHub Pages project site base path
-  const basePath = window.location.hostname.includes('github.io') 
-    ? '/UnessayProject' 
-    : '';
-  
-  const [qRes, rRes] = await Promise.all([
-    fetch(`${basePath}/assets/data/quotes.json`),
-    fetch(`${basePath}/assets/data/reflections.json`)
-  ]);
-
-  QUOTES = await qRes.json();
-  REFLECTIONS = await rRes.json();
-}
+const REFLECTIONS = {
+  "innocence": {
+    "fabio": "This quote defines innocence as a state of ignorance because she has no idea that the same lessons would later make her loneliness so much harder to handle.",
+    "mateus": "This highlights the tragic irony of her \"rescue\": her innocence becomes a weapon forged against her future self as that very education will later lead to her suffering."
+  },
+  "recognition": {
+    "fabio": "Ourika faces the harsh truth: the people she thought were her friends don't treat her like one. They look after her, but they don't see her as an equal.",
+    "mateus": "Ourika realizes that her social position, defined by her race, limits her from forming true friendships, reflecting her doll-like treatment."
+  },
+  "exclusion": {
+    "fabio": "The word \"revenge\" makes it clear this isn't an accident, it's a punishment for being where she doesn't belong.",
+    "mateus": "Exclusion is framed here not as indifference, but as an active retaliation by society against Ourika for daring to step outside the boundaries set for her."
+  },
+  "isolation": {
+    "fabio": "This shows her loneliness isn't just about being alone, but about feeling invisible in the hearts of the only family she's ever known.",
+    "mateus": "This moment reveals the painful understanding that her emotional bonds were an illusion, and her love existed without reciprocity."
+  },
+  "desire": {
+    "fabio": "The \"vulture\" image represents her repressed internal envy which is destroying her from the inside out.",
+    "mateus": "Her desire reflects romantic feelings for Charles, maternal responsibilities, and social belonging; all embodying a domestic life from which she is racially excluded."
+  },
+  "resignation": {
+    "fabio": "Her final choice is to lock herself away with all her pain because it's too hard to stay and watch Charles live his full life without her.",
+    "mateus": "Resignation here is presented not as spiritual peace, but as a retreat to a place where she may may quietly degrade, away from her cruel world."
+  }
+};
 
 function getKey(el) {
   return [...el.classList].find(c => c !== "selected") || "node";
@@ -117,10 +136,4 @@ overlay.addEventListener("click", e => {
 
 document.addEventListener("keydown", e => {
   if (e.key === "Escape") closeDetail();
-});
-
-loadData().catch(err => {
-  console.error("Failed to load data:", err);
-  QUOTES = {};
-  REFLECTIONS = {};
 });
