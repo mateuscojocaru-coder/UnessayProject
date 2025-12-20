@@ -18,9 +18,14 @@ let QUOTES = {};
 let REFLECTIONS = {};
 
 async function loadData() {
+  // GitHub Pages project site base path
+  const basePath = window.location.hostname.includes('github.io') 
+    ? '/UnessayProject' 
+    : '';
+  
   const [qRes, rRes] = await Promise.all([
-    fetch("/assets/data/quotes.json"),
-    fetch("/assets/data/reflections.json")
+    fetch(`${basePath}/assets/data/quotes.json`),
+    fetch(`${basePath}/assets/data/reflections.json`)
   ]);
 
   QUOTES = await qRes.json();
@@ -114,7 +119,8 @@ document.addEventListener("keydown", e => {
   if (e.key === "Escape") closeDetail();
 });
 
-loadData().catch(() => {
+loadData().catch(err => {
+  console.error("Failed to load data:", err);
   QUOTES = {};
   REFLECTIONS = {};
 });
