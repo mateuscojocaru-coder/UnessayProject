@@ -7,8 +7,9 @@ const reflectionEl = document.getElementById("detailReflection");
 const btnFabio = document.getElementById("btnFabio");
 const btnMateus = document.getElementById("btnMateus");
 
-const selectableNodes = Array.from(document.querySelectorAll("#container > div"))
-  .filter(el => !el.classList.contains("brain"));
+const selectableNodes = Array.from(
+  document.querySelectorAll("#container > div")
+).filter(el => !el.classList.contains("brain"));
 
 let selectedNode = null;
 let selectedKey = null;
@@ -41,7 +42,9 @@ function openDetail(el) {
   overlay.classList.add("open");
   overlay.setAttribute("aria-hidden", "false");
 
-  document.dispatchEvent(new CustomEvent("node:selected", { detail: el }));
+  document.dispatchEvent(
+    new CustomEvent("node:selected", { detail: el })
+  );
 }
 
 function closeDetail() {
@@ -49,7 +52,9 @@ function closeDetail() {
   overlay.setAttribute("aria-hidden", "true");
 
   if (selectedNode) {
-    document.dispatchEvent(new CustomEvent("node:deselected", { detail: selectedNode }));
+    document.dispatchEvent(
+      new CustomEvent("node:deselected", { detail: selectedNode })
+    );
     selectedNode.classList.remove("selected");
     selectedNode = null;
   }
@@ -78,17 +83,20 @@ btnMateus.addEventListener("click", () => showReflection("mateus"));
 selectableNodes.forEach(el => {
   el.tabIndex = 0;
 
-  el.addEventListener("click", (e) => {
+  el.addEventListener("click", e => {
     e.stopPropagation();
 
-    if (selectedNode && selectedNode !== el) selectedNode.classList.remove("selected");
+    if (selectedNode && selectedNode !== el) {
+      selectedNode.classList.remove("selected");
+    }
+
     selectedNode = el;
     el.classList.add("selected");
 
     openDetail(el);
   });
 
-  el.addEventListener("keydown", (e) => {
+  el.addEventListener("keydown", e => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       el.click();
@@ -98,11 +106,11 @@ selectableNodes.forEach(el => {
 
 closeBtn.addEventListener("click", closeDetail);
 
-overlay.addEventListener("click", (e) => {
+overlay.addEventListener("click", e => {
   if (e.target === overlay) closeDetail();
 });
 
-document.addEventListener("keydown", (e) => {
+document.addEventListener("keydown", e => {
   if (e.key === "Escape") closeDetail();
 });
 
