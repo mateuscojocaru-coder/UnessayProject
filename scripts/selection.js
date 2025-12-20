@@ -19,8 +19,8 @@ let REFLECTIONS = {};
 
 async function loadData() {
   const [qRes, rRes] = await Promise.all([
-    fetch("../assets/data/quotes.json"),
-    fetch("../assets/data/reflections.json")
+    fetch("./assets/data/quotes.json"),
+    fetch("./assets/data/reflections.json")
   ]);
 
   QUOTES = await qRes.json();
